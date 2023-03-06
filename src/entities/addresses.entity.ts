@@ -22,3 +22,7 @@ class Address {
     @Column({type:"varchar", length: 2})
     state: string;
 }
+
+export {
+    Address
+};
