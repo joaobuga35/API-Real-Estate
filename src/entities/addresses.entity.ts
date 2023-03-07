@@ -13,7 +13,7 @@ class Address {
     @Column({type:"varchar", length: 8})
     zipCode: string;
 
-    @Column({type:"varchar", length: 6, nullable: true})
+    @Column({type:"varchar", length: 7, nullable: true})
     number: string;
 
     @Column({type:"varchar", length: 20})
@@ -21,4 +21,9 @@ class Address {
 
     @Column({type:"varchar", length: 2})
     state: string;
+
 }
+
+export {
+    Address
+};

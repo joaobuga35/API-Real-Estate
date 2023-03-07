@@ -23,7 +23,7 @@ const handleError = (error: any, req: Request, resp: Response, next: NextFunctio
 			message: error.flatten().fieldErrors
 		});
 	}
-
+	
 	console.log(error);
 	return resp.status(500).json({
 		message: "Internal Server Error"
