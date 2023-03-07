@@ -3,7 +3,7 @@ import { Entity,PrimaryGeneratedColumn,Column, OneToMany} from "typeorm";
 import { RealEstate } from "./real.state.entity";
 
 @Entity("categories")
-class Categorie {
+class Category {
     @PrimaryGeneratedColumn("increment")
     id: number;
 
@@ -15,5 +15,5 @@ class Categorie {
 }
 
 export {
-    Categorie
+    Category
 };

@@ -10,7 +10,7 @@ import { Entity,
 	BeforeUpdate, 
     OneToMany
 } from "typeorm";
-import { ScheduleUsersProperties } from "./schedule.user.properties.entity";
+import { Schedule } from "./schedule.user.properties.entity";
 
 @Entity("users")
 class User {
@@ -23,8 +23,8 @@ class User {
     @Column({type: "varchar",length: 45, unique: true})
     email: string;
 
-    @Column({type: "boolean", default: false})
-    admin: boolean;
+    @Column({type: "boolean", default: false, nullable: true})
+    admin: boolean | undefined;
 
     @Column({type: "varchar", length: 120})
     password: string;
@@ -38,8 +38,18 @@ class User {
     @DeleteDateColumn()
     deletedAt: string;
 
-    @OneToMany(() => ScheduleUsersProperties, schedule => schedule.user)
-    schedule: ScheduleUsersProperties[];
+    @OneToMany(() => Schedule, schedule => schedule.user)
+    schedule: Schedule[];
+
+    @BeforeInsert()
+    @BeforeUpdate()
+    hashPassword(){
+        const isEncrypted = getRounds(this.password);
+        if (!isEncrypted) {
+            this.password = hashSync(this.password, 10);
+        }
+    }
+
 }
 
 export { 

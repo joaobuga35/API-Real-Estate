@@ -4,7 +4,7 @@ import { RealEstate } from "./real.state.entity";
 import { User } from "./user.entity";
 
 @Entity("schedule_users_properties")
-class ScheduleUsersProperties {
+class Schedule {
 
     @PrimaryGeneratedColumn("increment")
     id: number;
@@ -24,5 +24,5 @@ class ScheduleUsersProperties {
 }
 
 export {
-    ScheduleUsersProperties
+    Schedule
 };

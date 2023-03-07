@@ -1,8 +1,8 @@
 /* eslint-disable indent */
 import { Entity,PrimaryGeneratedColumn,Column, CreateDateColumn, UpdateDateColumn, OneToMany, OneToOne, JoinColumn, ManyToOne} from "typeorm"; 
 import { Address } from "./addresses.entity";
-import { Categorie } from "./categories.entity";
-import { ScheduleUsersProperties } from "./schedule.user.properties.entity";
+import { Category } from "./categories.entity";
+import { Schedule } from "./schedule.user.properties.entity";
 
 @Entity("real_estate")
 class RealEstate {
@@ -29,11 +29,11 @@ class RealEstate {
     @JoinColumn()
     address: Address;
     
-    @OneToMany(() => ScheduleUsersProperties, schedule => schedule.realEstate)
-    schedule: ScheduleUsersProperties[]; 
+    @ManyToOne(() => Category, category => category.estate)
+    category: Category;
 
-    @ManyToOne(() => Categorie, category => category.estate)
-    category: Categorie;
+    @OneToMany(() => Schedule, schedule => schedule.realEstate)
+    schedule: Schedule[]; 
 }
 
 export {
