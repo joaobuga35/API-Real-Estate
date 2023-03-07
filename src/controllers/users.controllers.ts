@@ -11,7 +11,7 @@ const createUserController = async (req: Request, resp: Response): Promise<Respo
 
 const readUsersController = async (req: Request, resp: Response): Promise<Response> => {
 	const allUsers = await readUsersService();
-	return resp.json(allUsers);
+	return resp.status(200).json(allUsers);
 };
 
 export {
