@@ -14,7 +14,10 @@ const returnCreateUserSchema = createUserSchema.extend({
 	deletedAt: z.date().nullable()
 }).omit({password: true});
 
+const allUsersSchema = z.array(returnCreateUserSchema);
+
 export {
 	createUserSchema,
-	returnCreateUserSchema
+	returnCreateUserSchema,
+	allUsersSchema
 };
