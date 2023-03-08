@@ -13,23 +13,23 @@ class RealEstate {
     @Column({type: "boolean", default: false})
     sold: boolean;
 
-    @Column({type: "decimal", precision: 12, scale: 2})
+    @Column({type: "decimal", precision: 12, scale: 2, default: 0})
     value: number | string;
 
     @Column({type: "integer"})
     size: number;
 
-    @CreateDateColumn()
+    @CreateDateColumn({type: "date"})
     createdAt: string;
 
-    @UpdateDateColumn()
+    @UpdateDateColumn({type: "date"})
     updatedAt: string;
 
     @OneToOne(() => Address)
     @JoinColumn()
     address: Address;
     
-    @ManyToOne(() => Category, category => category.estate)
+    @ManyToOne(() => Category, category => category.estate, {nullable: true})
     category: Category;
 
     @OneToMany(() => Schedule, schedule => schedule.realEstate)
