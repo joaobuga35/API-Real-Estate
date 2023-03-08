@@ -1,10 +1,12 @@
+import { Request } from "express";
 import { Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";
 import { User } from "../../entities";
+import { AppError } from "../../errors";
 import { iReturnCreateUser, iUpdateUsersPartial } from "../../interfaces/users.interface";
 import { returnCreateUserSchema } from "../../schemas/users.schema";
 
-const updateUserService = async (userData: iUpdateUsersPartial, idUser: number): Promise<iReturnCreateUser> => {
+const updateUserService = async (userData: iUpdateUsersPartial, idUser: number, req: Request): Promise<iReturnCreateUser> => {
 
 	const userRepo: Repository<User> = AppDataSource.getRepository(User);
 

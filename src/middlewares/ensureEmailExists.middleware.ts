@@ -5,17 +5,18 @@ import { User } from "../entities";
 import { AppError } from "../errors";
 
 const ensureEmailExists = async (req: Request, resp: Response, next: NextFunction): Promise<void> => {
+	if (req.body.email) {
+		const userRepo: Repository<User> = AppDataSource.getRepository(User);
 
-	const userRepo: Repository<User> = AppDataSource.getRepository(User);
+		const findUser = await userRepo.findOne({
+			where: {
+				email: req.body.email
+			}
+		});
 
-	const findUser = await userRepo.findOne({
-		where: {
-			email: req.body.email
+		if (findUser) {
+			throw new AppError("Email already exists", 409);
 		}
-	});
-
-	if (findUser) {
-		throw new AppError("Email already exists", 409);
 	}
 	return next();
 };

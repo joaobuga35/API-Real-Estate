@@ -20,7 +20,7 @@ const ensureTokenIsValid =  async (req: Request, resp: Response, next: NextFunct
 
 		req.user = {
 			id: Number(decoded.sub),
-			role: decoded.admin
+			admin: decoded.admin
 		};
 
 		return next();
