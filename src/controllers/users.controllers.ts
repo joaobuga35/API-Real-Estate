@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import createUserService from "../services/Users/createUser.service";
+import deleteUserService from "../services/Users/deleteUser.service";
 import readUsersService from "../services/Users/readUsers.service";
 import updateUserService from "../services/Users/updateUser.service";
 
@@ -27,6 +28,10 @@ const updateUsersController = async (req: Request, resp: Response): Promise<Resp
 };
 
 const deleteUsersController = async (req: Request, resp: Response): Promise<Response> => {
+	const id = Number(req.params.id);
+	
+	await deleteUserService(id);
+
 	return resp.status(204).json();
 };
 

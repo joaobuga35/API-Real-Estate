@@ -2,7 +2,6 @@ import { Request } from "express";
 import { Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";
 import { User } from "../../entities";
-import { AppError } from "../../errors";
 import { iReturnCreateUser, iUpdateUsersPartial } from "../../interfaces/users.interface";
 import { returnCreateUserSchema } from "../../schemas/users.schema";
 

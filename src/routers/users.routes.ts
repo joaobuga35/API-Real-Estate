@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createUserController, readUsersController, updateUsersController } from "../controllers/users.controllers";
+import { createUserController, deleteUsersController, readUsersController, updateUsersController } from "../controllers/users.controllers";
 import ensureADMisValid from "../middlewares/ensureADMisValid.middleware";
 import ensureEmailExists from "../middlewares/ensureEmailExists.middleware";
 import ensureIDisValid from "../middlewares/ensureIDisValid.middleware";
@@ -13,6 +13,6 @@ const userRoutes: Router = Router();
 userRoutes.post("",ensureBodyIsValidMiddleware(createUserSchema),ensureEmailExists,createUserController);
 userRoutes.get("",ensureTokenIsValid,ensureADMisValid,readUsersController);
 userRoutes.patch("/:id",ensureTokenIsValid,ensureIDisValid,ensureBodyIsValidMiddleware(updateUserSchema),ensureADMandIDisValid,ensureEmailExists,updateUsersController);
-userRoutes.delete("/:id",);
+userRoutes.delete("/:id",ensureTokenIsValid,ensureIDisValid,ensureADMisValid,deleteUsersController);
 
 export default userRoutes;
