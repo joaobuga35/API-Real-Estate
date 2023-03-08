@@ -4,7 +4,7 @@ const createUserSchema = z.object({
 	name: z.string().min(3).max(45),
 	email: z.string().email().max(45),
 	password: z.string().min(4).max(120),
-	admin: z.boolean().default(false).optional()
+	admin: z.boolean().optional().default(false)
 });
 
 const returnCreateUserSchema = createUserSchema.extend({
@@ -15,7 +15,6 @@ const returnCreateUserSchema = createUserSchema.extend({
 }).omit({password: true});
 
 const updateUserSchema = createUserSchema.partial().omit({admin: true});
-
 
 const allUsersSchema = z.array(returnCreateUserSchema);
 

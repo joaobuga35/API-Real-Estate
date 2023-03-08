@@ -23,8 +23,8 @@ class User {
     @Column({type: "varchar",length: 45, unique: true})
     email: string;
 
-    @Column({type: "boolean", default: false, nullable: true})
-    admin: boolean | undefined;
+    @Column({type: "boolean", default: false})
+    admin: boolean;
 
     @Column({type: "varchar", length: 120})
     password: string;
