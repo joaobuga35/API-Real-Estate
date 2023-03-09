@@ -22,7 +22,7 @@ const createRealEstateSchema = z.object({
 	value: z.number().gt(0).or(z.string()),
 	size: z.number().gt(0),
 	address: addressSchema,
-	categoryId: z.number().optional(),
+	categoryId: z.number(),
 });
 
 const realEstateResponseSchema = z.object({
@@ -31,7 +31,7 @@ const realEstateResponseSchema = z.object({
 	size: z.number().gt(0),
 	sold: z.boolean().default(false),
 	address: returnAddressSchema,
-	category: categoryResponseSchema.nullish(),
+	category: categoryResponseSchema,
 	createdAt: z.string(),
 	updatedAt: z.string()
 });

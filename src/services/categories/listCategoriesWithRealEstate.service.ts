@@ -2,7 +2,7 @@ import { Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";
 import { Category } from "../../entities";
 import { AppError } from "../../errors";
-
+import { iCategoriesRealEstate } from "../../interfaces/categories.interface";
 
 const listCategoriesWithRealEstateService = async (idCategorie: number):Promise<any> => {
 	const categoryRepo: Repository<Category> = AppDataSource.getRepository(Category);
@@ -23,8 +23,6 @@ const listCategoriesWithRealEstateService = async (idCategorie: number):Promise<
 			realEstate: true
 		}
 	});
-
-	console.log(findCategoryWithRealEstate);
 
 	return findCategoryWithRealEstate;
 };
