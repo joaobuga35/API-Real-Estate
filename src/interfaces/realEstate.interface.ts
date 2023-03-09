@@ -3,8 +3,10 @@ import { createRealEstateSchema, realEstateResponseSchema } from "../schemas/rea
 
 type iCreateRealEstate = z.infer<typeof createRealEstateSchema>
 type iResponseRealEstate = z.infer<typeof realEstateResponseSchema>
+type iReadRealEstate = Array<iResponseRealEstate>
 
 export {
 	iCreateRealEstate,
-	iResponseRealEstate
+	iResponseRealEstate,
+	iReadRealEstate
 };
