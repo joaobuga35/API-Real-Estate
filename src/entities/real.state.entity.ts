@@ -29,7 +29,7 @@ class RealEstate {
     @JoinColumn()
     address: Address;
     
-    @ManyToOne(() => Category, category => category.estate, {nullable: true})
+    @ManyToOne(() => Category, category => category.realEstate, {nullable: true})
     category: Category;
 
     @OneToMany(() => Schedule, schedule => schedule.realEstate)
