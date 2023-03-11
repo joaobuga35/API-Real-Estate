@@ -14,6 +14,13 @@ const returnCreateUserSchema = createUserSchema.extend({
 	deletedAt: z.string().nullable()
 }).omit({password: true});
 
+const userCompleteSchema = createUserSchema.extend({
+	id: z.number(),
+	createdAt: z.string(),
+	updatedAt: z.string(),
+	deletedAt: z.string().nullable()
+});
+
 const updateUserSchema = createUserSchema.partial().omit({admin: true});
 
 const allUsersSchema = z.array(returnCreateUserSchema);
@@ -22,5 +29,6 @@ export {
 	createUserSchema,
 	returnCreateUserSchema,
 	allUsersSchema, 
-	updateUserSchema
+	updateUserSchema,
+	userCompleteSchema
 };
