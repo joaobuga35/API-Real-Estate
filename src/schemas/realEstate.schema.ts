@@ -39,5 +39,6 @@ const realEstateResponseSchema = z.object({
 
 export {
 	createRealEstateSchema,
-	realEstateResponseSchema
+	realEstateResponseSchema,
+	returnAddressSchema
 };
